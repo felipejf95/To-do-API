@@ -1,5 +1,13 @@
 package br.com.felipe.desafio_todo.entity;
 
+import jakarta.persistence.*;
+import lombok.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;   
+
+
 
 @Getters
 @Setters

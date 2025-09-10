@@ -11,25 +11,24 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    <List> Todo createTodo(Todo todo) {
+    List <Todo> createTodo(Todo todo) {
         todoRepository.save(todo);
     }
 
-    <List> List<Todo> getAllTodos() {
-        Sort todoSort = Sort.by(Sort.Direction.DESC, "id");
-        return todoRepository.findAll();
+    List <Todo> getAllTodos() {
+        Sort todoSort = Sort.by(...property: "prioridade").descending().and(
+            Sort.by(...property: "nome").ascending();
+        );
+        return todoRepository.findAll(todoSort);
     }
 
-    <List> Todo getTodoById(Long id) {
+    List <Todo> getTodoById(Long id) {
         return todoRepository.findById(id).orElse(null);
     }
 
-    <List> Todo updateTodo(Long id, Todo todo) {
-        return todoRepository.findById(id).map(existingTodo -> {
-            existingTodo.setTitle(todo.getTitle());
-            existingTodo.setCompleted(todo.isCompleted());
-            return todoRepository.save(existingTodo);
-        }).orElse(null);
+    List <Todo> updateTodo(Todo todo) {
+        todoRepository.save(todo);
+        return getAllTodos();
     }
 
     <List> void deleteTodo(Long id) {
