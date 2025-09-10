@@ -1,32 +1,45 @@
-package br.com.felipe.desafio_todo.controller;
+package br.com.felipe.desafio_todo.service;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.felipe.desafio_todo.entity.Todo;
 
 @RestController
-@RequestMapping()"/todos")
+@RequestMapping("/todos")
 public class TodoController {
-    
+
     private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
     }
 
-    @POSTMapping
-    List <Todo> createTodo(@RequestBody Todo todo) {
+    @PostMapping
+    String createTodo(@RequestBody Todo todo) {
         return todoService.createTodo(todo);
     }
 
-    @GETMapping
-    List <Todo> getAllTodos() {
+    @GetMapping
+    List<Todo> getAllTodos() {
         return todoService.getAllTodos();
     }
 
-    @GETMapping("/{id}")
-    List <Todo> getTodoById(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    Todo getTodoById(@PathVariable Long id) {
         return todoService.getTodoById(id);
     }
 
     @PutMapping
-    List <Todo> updateTodo(@RequestBody Todo todo) {
+    List<Todo> updateTodo(@RequestBody Todo todo) {
         return todoService.updateTodo(todo);
     }
 

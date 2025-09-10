@@ -1,38 +1,45 @@
 package br.com.felipe.desafio_todo.service;
 
+import java.util.List;
 
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
-@Service 
+import br.com.felipe.desafio_todo.entity.Todo;
+import br.com.felipe.desafio_todo.repository.TodoRepository;
+
+@Service
 public class TodoService {
-    
+
     private final TodoRepository todoRepository;
 
     public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 
-    List <Todo> createTodo(Todo todo) {
+    String createTodo(Todo todo) {
         todoRepository.save(todo);
+        return "Tarefa criada com sucesso!";
     }
 
-    List <Todo> getAllTodos() {
-        Sort todoSort = Sort.by(...property: "prioridade").descending().and(
-            Sort.by(...property: "nome").ascending();
+    List<Todo> getAllTodos() {
+        Sort todoSort = Sort.by("prioridade").descending().and(
+                Sort.by("nome").ascending()
         );
         return todoRepository.findAll(todoSort);
     }
 
-    List <Todo> getTodoById(Long id) {
+    Todo getTodoById(Long id) {
         return todoRepository.findById(id).orElse(null);
     }
 
-    List <Todo> updateTodo(Todo todo) {
+    List<Todo> updateTodo(Todo todo) {
         todoRepository.save(todo);
         return getAllTodos();
     }
 
-    <List> void deleteTodo(Long id) {
-        return todoRepository.deleteById(id);
+    void deleteTodo(Long id) {
+        todoRepository.deleteById(id);
     }
-    
+
 }
