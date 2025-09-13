@@ -1,0 +1,10 @@
+{
+    {
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "editor.formatOnSave": true
+}
+
+}

@@ -17,28 +17,28 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    String createTodo(Todo todo) {
+    public String createTodo(Todo todo) {
         todoRepository.save(todo);
         return "Tarefa criada com sucesso!";
     }
 
-    List<Todo> getAllTodos() {
+    public List<Todo> getAllTodos() {
         Sort todoSort = Sort.by("prioridade").descending().and(
                 Sort.by("nome").ascending()
         );
         return todoRepository.findAll(todoSort);
     }
 
-    Todo getTodoById(Long id) {
+    public Todo getTodoById(Long id) {
         return todoRepository.findById(id).orElse(null);
     }
 
-    List<Todo> updateTodo(Todo todo) {
+    public List<Todo> updateTodo(Todo todo) {
         todoRepository.save(todo);
         return getAllTodos();
     }
 
-    void deleteTodo(Long id) {
+    public void deleteTodo(Long id) {
         todoRepository.deleteById(id);
     }
 

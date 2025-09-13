@@ -1,4 +1,4 @@
-package br.com.felipe.desafio_todo.service;
+package br.com.felipe.desafio_todo.controller;
 
 import java.util.List;
 
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.felipe.desafio_todo.entity.Todo;
+import br.com.felipe.desafio_todo.service.TodoService;
 
 @RestController
 @RequestMapping("/todos")
@@ -24,27 +25,27 @@ public class TodoController {
     }
 
     @PostMapping
-    String createTodo(@RequestBody Todo todo) {
+    public String createTodo(@RequestBody Todo todo) {
         return todoService.createTodo(todo);
     }
 
     @GetMapping
-    List<Todo> getAllTodos() {
+    public List<Todo> getAllTodos() {
         return todoService.getAllTodos();
     }
 
     @GetMapping("/{id}")
-    Todo getTodoById(@PathVariable Long id) {
+    public Todo getTodoById(@PathVariable Long id) {
         return todoService.getTodoById(id);
     }
 
     @PutMapping
-    List<Todo> updateTodo(@RequestBody Todo todo) {
+    public List<Todo> updateTodo(@RequestBody Todo todo) {
         return todoService.updateTodo(todo);
     }
 
     @DeleteMapping("/{id}")
-    <List> void deleteTodo(@PathVariable Long id) {
+    public void deleteTodo(@PathVariable Long id) {
         todoService.deleteTodo(id);
     }
 }
